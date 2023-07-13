@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Estudiantes</h1>
+    <form action="/estudiantes/filtrarPorId" method="post">
+        <input type="text" name="idEstudiante" placeholder="id estudiante">
+        <button type="submit">Filtrar</button>
+    </form>
+    {{#each datos}}
+    <p>{{this.id_estudiante}} - {{this.nombre}} - {{this.rut}}</p>
+    {{/each}}
+
+</body>
+</html>

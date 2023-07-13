@@ -1,6 +1,6 @@
 import Conexion from '../models/cnn.js';
 
-const create = async (id_estudiante, rut, nombre, apellido_pat, apellido_mat, direccion, codigo_comuna, codigo_curso) => {
+const createService = async (id_estudiante, rut, nombre, apellido_pat, apellido_mat, direccion, codigo_comuna, codigo_curso) => {
     const conexion = new Conexion();
     const query = {
         text: `INSERT INTO estudiante(id_estudiante, rut, nombre, apellido_pat, apellido_mat, direccion, codigo_comuna, codigo_curso)
@@ -21,7 +21,7 @@ const create = async (id_estudiante, rut, nombre, apellido_pat, apellido_mat, di
     }
 }
 
-const readAll = async () => {
+const readAllService = async () => {
     const conexion = new Conexion();
     try{
         const res = await conexion.obtenerConexion().query('SELECT * FROM estudiante');
@@ -36,7 +36,7 @@ const readAll = async () => {
     }
 }
 
-const readById = async (id_estudiante) => {
+const readByIdService = async (id_estudiante) => {
     const conexion = new Conexion();
     const query = {
         text: `SELECT * FROM estudiante WHERE id_estudiante = $1`,
@@ -56,7 +56,7 @@ const readById = async (id_estudiante) => {
     }
 }
 
-const update = async (id_estudiante, nombre, apellido_pat, apellido_mat, direccion, codigo_comuna, codigo_curso) => {
+const updateService = async (id_estudiante, nombre, apellido_pat, apellido_mat, direccion, codigo_comuna, codigo_curso) => {
     const conexion = new Conexion();
     const query = {
         text: `UPDATE estudiante
@@ -78,7 +78,7 @@ const update = async (id_estudiante, nombre, apellido_pat, apellido_mat, direcci
     }
 }
 
-const deleteById = async (id_estudiante) => {
+const deleteByIdService = async (id_estudiante) => {
     const conexion = new Conexion();
     const query = {
         text: `DELETE FROM estudiante WHERE id_estudiante = $1 RETURNING *`,
@@ -98,5 +98,10 @@ const deleteById = async (id_estudiante) => {
     }
 }
 
-/* const res = await deleteById(702);
-console.log(res); */
+export{
+    createService,
+    readAllService,
+    readByIdService,
+    updateService,
+    deleteByIdService
+}
